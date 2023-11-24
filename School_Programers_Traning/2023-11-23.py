@@ -155,3 +155,25 @@ def solution(num_list):
     
     return num_list
 
+def solution(arr, n):
+    
+    # 솔루션 정의
+    # 정수 배열 arr과 정수 n이 매개변수로 주어집니다.
+    # arr의 길이가 홀수라면 arr의 모든 짝수 인덱스 위치에 n을 더한 배열을
+    # arr의 길이가 짝수라면 arr의 모든 홀수 인덱스 위치에 n을 더한 배열을 return
+    
+    # 변수 설정
+    k = len(arr)
+    
+    # 홀수 길이의 배열이면 짝수 인덱스에 n을 더함
+    if (k % 2) != 0 :
+        for i in range(0, k, 2) :
+            arr[i] += n
+            
+    # 짝수 길이의 배열이면 홀수 인덱스에 n을 더함
+    else :
+        for i in range(1, k, 2) :
+            arr[i] += n
+    
+    return arr
+
