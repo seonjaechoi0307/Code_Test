@@ -212,6 +212,26 @@ def solution(arr):
     
     return answer
 
+# 빈 배열에 추가, 삭제하기
+def solution(arr, flag):
+    
+    # 아무 원소도 들어있지 않은 빈 배열 X가 있습니다.
+    # 길이가 같은 정수 배열 arr과 boolean 배열 flag가 매개변수로 주어질 때
+    # flag를 차례대로 순회하며 flag[i]가 true라면 X의 뒤에 arr[i]를 arr[i] × 2 번 추가하고
+    # flag[i]가 false라면 X에서 마지막 arr[i]개의 원소를 제거한 뒤 X를 return
+
+    X = []
+    
+    for i in range(len(flag)) :
+        
+        if flag[i] == True :
+            X.extend([arr[i]] * (arr[i] * 2))
+            
+        else :
+            X = X[:-arr[i]]
+    
+    return X
+
 # 문자열 돌리기
 str = input()
 
@@ -237,4 +257,105 @@ def solution(my_string, m, c):
     # 한줄로 되어있는 my_string을 c번부터 m 간격값  슬라이싱
     
     answer = my_string[c-1::m]
+    return answer
+
+# 수열과 구간 쿼리 1
+def solution(arr, queries):
+    
+    # 솔루션 정의
+    # 정수 배열 arr와 2차원 정수 배열 queries이 주어집니다.
+    # queries의 원소는 각각 하나의 query를 나타내며, [s, e] 꼴입니다.
+    # 각 query마다 순서대로 s ≤ i ≤ e인 모든 i에 대해 arr[i]에 1을 더합니다.
+    # 위 규칙에 따라 queries를 처리한 이후의 arr를 return
+    
+    # arr[i]의 각 원소값에 조건이 만족할 시 +1한 값을 return
+    
+    n = len(queries)
+    m = len(arr)
+    answer = arr.copy()
+    
+    for querie in queries :
+        s, e = querie
+        
+        for i in range(m) :
+            
+            if s <= i <= e :
+                answer[i] += 1
+                
+            else :
+                pass
+            
+    return answer
+
+# 날짜 비교하기
+def solution(date1, date2):
+    
+    # 솔루션
+    # 정수 배열 date1과 date2가 주어집니다.
+    # 두 배열은 각각 날짜를 나타내며 [year, month, day] 꼴로 주어집니다.
+    # 각 배열에서 year는 연도를, month는 월을, day는 날짜를 나타냅니다.
+    # 만약 date1이 date2보다 이전 날짜라면 1을, 아니면 0을 return
+    
+    answer = 0
+    d1 = ''
+    d2 = ''
+    
+    for i in range(3) :
+        d1 += str(date1[i])
+        d2 += str(date2[i])
+    
+    if int(d1) < int(d2) :
+        answer = 1
+        return answer
+    
+    return answer
+
+# 등차수열의 특정한 항만 더하기
+def solution(a, d, included):
+    
+    # 솔루션 정의
+    # 두 정수 a, d와 길이가 n인 boolean 배열 included가 주어집니다.
+    # 첫째항이 a, 공차가 d인 등차수열에서 included[i]가 i + 1항을 의미할 때
+    # 이 등차수열의 1항부터 n항까지 included가 true인 항들만 더한 값을 return
+    
+    answer = 0
+    n = len(included)
+    
+    for i in range(n) :
+        
+        if included[i] == True :
+            answer += a + (i) * d
+    
+    return answer
+
+# 글자 지우기
+def solution(my_string, indices):
+    
+    # 솔루션 정의
+    # 문자열 my_string과 정수 배열 indices가 주어질 때
+    # my_string에서 indices의 원소에 해당하는 인덱스의 글자를 지우고 이어 붙인 문자열을 return
+
+    answer = ''
+    str_list = list(range(0, len(my_string)))
+    
+    for i in str_list :
+        
+        if i not in indices :
+            answer += my_string[i]
+            
+    return answer
+
+# 문자열 섞기
+def solution(str1, str2):
+    
+    # 솔루션 정의
+    # 길이가 같은 두 문자열 str1과 str2가 주어집니다.
+    # 두 문자열의 각 문자가 앞에서부터 서로 번갈아가면서 한 번씩 등장하는 문자열을 만들어 return 하는 solution 함수를 완성해 주세요.
+
+    n = len(str1)
+    answer = ''
+    
+    for i in range(n) :
+        answer += (str1[i] + str2[i])
+        
     return answer
