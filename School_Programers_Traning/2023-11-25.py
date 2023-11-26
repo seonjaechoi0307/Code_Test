@@ -218,3 +218,23 @@ str = input()
 for i in str :
     print(i)
 
+# 9로 나눈 나머지
+def solution(number):
+    
+    # 솔루션 정의
+    # 음이 아닌 정수를 9로 나눈 나머지는 그 정수의 각 자리 숫자의 합을 9로 나눈 나머지와 같은 것이 알려져 있습니다.
+    # 이 사실을 이용하여 음이 아닌 정수가 문자열 number로 주어질 때, 이 정수를 9로 나눈 나머지를 return 하는 solution 함수를 작성해주세요.
+    
+    return int(number) % 9
+
+# 세로 읽기
+def solution(my_string, m, c):
+    
+    # 솔루션 정의
+    # 문자열 my_string과 두 정수 m, c가 주어집니다.
+    # my_string을 한 줄에 m 글자씩 가로로 적었을 때 왼쪽부터 세로로 c번째 열에 적힌 글자들을 문자열로 return
+    
+    # 한줄로 되어있는 my_string을 c번부터 m 간격값  슬라이싱
+    
+    answer = my_string[c-1::m]
+    return answer
